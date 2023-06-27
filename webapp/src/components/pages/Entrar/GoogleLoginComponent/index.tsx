@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { login, setLocation } from "redux/slicer/user";
+import { login } from "redux/slicer/user";
 import axios from "axios";
-import { googleLogout, useGoogleLogin } from "@react-oauth/google";
-import { getLocation } from "utils";
+import { useGoogleLogin } from "@react-oauth/google";
 
 // Shared
 import Button from "components/shared/Button";

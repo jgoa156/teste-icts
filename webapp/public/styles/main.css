@@ -46,6 +46,12 @@ html {
 	overflow-y: overlay;
 	scroll-padding-bottom: 65px;
 }
+
+@media (max-width: 575px) {
+	html {
+		font-size: 14px;
+	}
+}
 body {
 	background-color: var(--background);
 	color: var(--text-default);

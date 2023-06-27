@@ -10,7 +10,7 @@ export const Sidenav = styled.div`
 	width: 400px;
 
 	background-color: var(--white-1);
-	overflow: hidden;
+	overflow-y: auto;
 	word-wrap: break-word;
 	white-space: nowrap;
 
@@ -19,11 +19,12 @@ export const Sidenav = styled.div`
 	& > div {
 		padding: 0 20px;
 		overflow-y: auto;
-		height: 1500px;
+		height: 1565px;
 	}
 
 	@media (max-width: 575px) {
-		width: 65%;
+		width: 90%;
+		left: ${props => props.show ? "0" : "-90%"};
 	}
 
 	.buttonWrapper {

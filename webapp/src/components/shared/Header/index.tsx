@@ -58,7 +58,7 @@ export default function Header() {
 				/>
 			</LocationsInputWrapper>
 
-			<div>
+			<div style={{ display: "flex", alignItems: "center" }}>
 				<img src={user.picture} referrerPolicy="no-referrer" />
 				{!isMobile && <span>{user.name}</span>}
 

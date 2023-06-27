@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { components } from "react-select";
 
 // Shared
 import Spinner from "components/shared/Spinner";
@@ -69,14 +68,6 @@ export default function SelectCustom({
 		}
 	}, [value]);
 
-	const DropdownIndicator = props => {
-		return (
-			<components.DropdownIndicator {...props}>
-				<i className="fas fa-search" style={{ marginTop: -5 }} />
-			</components.DropdownIndicator>
-		);
-	};
-
 	return (
 		loaded
 			? <InputWrapper focused={focused}>
@@ -101,9 +92,6 @@ export default function SelectCustom({
 						? <SpinnerWrapper><Spinner size={"20px"} color={"var(--muted)"} /></SpinnerWrapper>
 						: <>{noOptionsMessage}</>
 					}
-					components={{
-						DropdownIndicator
-					}}
 					{...props}
 				/>
 

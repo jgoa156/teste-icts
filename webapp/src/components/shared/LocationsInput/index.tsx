@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getLocation } from "utils";
-import { useDispatch } from "react-redux";
-import { setLocation } from "redux/slicer/user";
+import { components } from "react-select";
 
 // Shared
 import SelectCustom from "../SelectCustom";
@@ -94,6 +93,14 @@ export default function LocationsInput({
 		return () => clearTimeout(debounce);
 	}, [search]);
 
+	const DropdownIndicator = props => {
+		return (
+			<components.DropdownIndicator {...props}>
+				<i className="fas fa-search" style={{ marginTop: -5 }} />
+			</components.DropdownIndicator>
+		);
+	};
+
 	return (
 		<FormWrapper>
 			<InputWrapper>
@@ -117,6 +124,9 @@ export default function LocationsInput({
 					obligatoryAlert={""}
 					fetching={fetchingPlaces}
 					noOptionsMessage={"Nenhum local encontrado"}
+					components={{
+						DropdownIndicator
+					}}
 				/>
 			</InputWrapper>
 		</FormWrapper>

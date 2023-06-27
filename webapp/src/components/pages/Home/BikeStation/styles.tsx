@@ -73,7 +73,6 @@ export const Info = styled.div`
 `;
 
 export const FormReservation = styled.form`
-	overflow-y: auto;
 	padding: 20px;
 
 	background-color: var(--white-5);
