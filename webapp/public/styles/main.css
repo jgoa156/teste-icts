@@ -1,0 +1,85 @@
+/*---------------------- VARIABLES ----------------------*/
+:root {
+	/* Orange */
+	/*--primary-color: #ec5300;
+	--primary-color-2: #ec2400;*/
+
+	/* Blue */
+	--primary-color: #fc0356;
+	--primary-color-2: #9c0839;
+
+	--white-1: #eee;
+	--white-2: #e6e6e6;
+	--white-3: #ddd;
+	--white-4: #fcfcfc;
+	--white-5: #fafafa;
+
+	--background: var(--white-1);
+	--background-hover: var(--white-2);
+
+	--success: #2e9af2;
+	--success-hover: #216faf;
+	--danger: #fc0356;
+	--danger-hover: #9c0839;
+	--warning: #f5e342;
+	--warning-hover: #f5ce22;
+	--green: #15e866;
+
+	--text-default: #222;
+
+	--muted: #6c757d;
+	--muted-hover: #585e64;
+}
+
+@font-face {
+	font-family: "Newake";
+	src: url("../fonts/Newake-Font-Demo.otf");
+}
+
+/*---------------------- GENERAL ----------------------*/
+html {
+	height: 100%;
+
+	font-size: 16px;
+
+	scroll-behavior: smooth;
+	overflow-y: overlay;
+	scroll-padding-bottom: 65px;
+}
+body {
+	background-color: var(--background);
+	color: var(--text-default);
+	font-family: "Heebo";
+	padding: 0;
+	margin: 0;
+	position: relative;
+
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center center;
+	overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+	opacity: 0.1;
+	background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--muted);
+	border-radius: 10px;
+	transition: 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--muted-hover);
+	cursor: pointer;
+}
+
+/*---------------------- UTILS ----------------------*/
+.invert-color {
+	-webkit-filter: invert(100%);
+	filter: invert(100%);
+}
