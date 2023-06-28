@@ -70,6 +70,16 @@ function App(props: any) {
 
 				<title>{process.env.title}</title>
 
+				{/* Favicon */}
+				<link
+					rel="apple-touch-icon"
+					href={`${process.env.basePath}/img/favicon.png`}
+				/>
+				<link
+					rel="icon"
+					href={`${process.env.basePath}/img/favicon.png`}
+				/>
+
 				{/* Font Awesome */}
 				<link
 					rel="stylesheet"
