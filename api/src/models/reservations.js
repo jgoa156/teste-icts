@@ -33,10 +33,24 @@ module.exports = (sequelize, DataTypes) => {
 			hourStart: {
 				type: DataTypes.TIME,
 				allowNull: false,
+				validate: {
+					isValid(value) {
+						if (!value.includes(":") || value.split(":")[1] != "00") {
+							throw new Error("Valor da hora de início inválido");
+						}
+					},
+				},
 			},
 			hourEnd: {
 				type: DataTypes.TIME,
 				allowNull: false,
+				validate: {
+					isValid(value) {
+						if (!value.includes(":") || value.split(":")[1] != "00") {
+							throw new Error("Valor da hora de término inválido");
+						}
+					},
+				},
 			},
 		},
 		{

@@ -12,6 +12,7 @@ async function list(req, res) {
 					model: Reservations,
 					as: "reservations",
 					required: true,
+					attributes: ["day", "hourStart", "hourEnd"],
 					where: {
 						userId: userId,
 					},
@@ -49,6 +50,16 @@ async function add(req, res) {
 		if (!(await Stations.findByPk(stationId))) {
 			return res.status(404).json({
 				message: "Estação não encontrada.",
+			});
+		}
+
+		const { hourStart, hourEnd } = req.body;
+		const _hourStart = parseInt(hourStart.split(":")[0]);
+		const _hourEnd = parseInt(hourEnd.split(":")[0]);
+
+		if (_hourStart >= _hourEnd) {
+			return res.status(400).json({
+				message: "Hora de início deve ser menor que a hora de término.",
 			});
 		}
 

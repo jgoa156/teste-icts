@@ -7,7 +7,7 @@ export const LoginWrapper = styled(Container)`
 	padding: 35px;
 
 	@media only screen and (max-width: 1024px) {
-		width: 50%;
+		width: 65%;
 	}
 
 	@media only screen and (max-width: 575px) {
