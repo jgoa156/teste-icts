@@ -26,7 +26,6 @@ export default function LocationsInput({
 	const [search, setSearch] = useState<string>("");
 	const handleSearch = value => {
 		setSearch(value);
-		console.log(value);
 	}
 
 	const [places, setPlaces] = useState<any[]>([]);

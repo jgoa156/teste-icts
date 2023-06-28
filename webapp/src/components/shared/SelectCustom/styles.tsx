@@ -3,15 +3,15 @@ import Select from "react-select";
 
 // Colors
 const text = {
-  default: "var(--text-default)",
-  unfocused: "var(--muted)",
-  focused: "var(--primary-color)",
-  valid: "var(--primary-color)",
-  invalid: "var(--danger)"
+	default: "var(--text-default)",
+	unfocused: "var(--muted)",
+	focused: "var(--primary-color)",
+	valid: "var(--primary-color)",
+	invalid: "var(--danger)"
 };
 const background = {
-  unfocused: "var(--white-3)",
-  focused: "var(--white-3)"
+	unfocused: "var(--white-3)",
+	focused: "var(--white-3)"
 };
 
 export const AlertLabel = styled.div`
@@ -87,6 +87,9 @@ export const SelectStyled = styled(Select)`
 	border-radius: 4px;
 
 	& [class*="control"] {
+		display: grid;
+		grid-template-columns: 1fr 30px;
+
 		background-color: transparent;
 		border-radius: 4px;
 		border: none;
@@ -177,17 +180,17 @@ export const SelectStyled = styled(Select)`
 
 	& + ${FloatingLabel} {
 		color: ${props =>
-    props.verified
-      ? props.valid
-        ? !props.empty
-          ? text.valid
-          : props.focused
-            ? text.focused
-            : text.unfocused
-        : text.invalid
-      : props.focused
-        ? text.focused
-        : text.unfocused};
+		props.verified
+			? props.valid
+				? !props.empty
+					? text.valid
+					: props.focused
+						? text.focused
+						: text.unfocused
+				: text.invalid
+			: props.focused
+				? text.focused
+				: text.unfocused};
 		font-size: ${props => props.focused ? "0.75rem" : "1rem"};
 		top: ${props => props.focused ? "4px" : "12px"};
 		z-index: ${props => props.focused ? 3 : 1};

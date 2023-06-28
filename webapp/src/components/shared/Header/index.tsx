@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { logout, setLocation } from "redux/slicer/user";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
+import { useRouter } from "next/router";
 
 // Custom
 import LocationsInput from "../LocationsInput";
@@ -21,19 +22,24 @@ import { IRootState } from "redux/store";
 import IUserLogged from "interfaces/IUserLogged";
 
 export default function Header() {
+	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector<IRootState, IUserLogged>(state => state.user);
 	const [showSidenav, setShowSidenav] = useState(false);
 
 	const links = [
-		{ icon: "fas fa-bicycle", title: "Localizar estações", route: "home" },
-		{ icon: "far fa-calendar-check", title: "Minhas reservas", route: "reservas" },
+		{ icon: "fas fa-bicycle", title: "Localizar estações", route: "/home" },
+		{ icon: "far fa-calendar-check", title: "Minhas reservas", route: "/reservas" },
 		{ icon: "fas fa-sign-out", title: "Sair", onClick: () => dispatch(logout()) }
 	];
 
 	const isMobile = useMediaQuery({
 		query: "(max-width: 575px)"
 	});
+
+	function getPrimaryRoute(route) {
+		return `/${route.split("/")[1]}`;
+	}
 
 	// Search
 	const [place, setPlace] = useState<any>(null);
@@ -77,11 +83,11 @@ export default function Header() {
 						</button>
 					</div>
 
-					<LinkWrapper>
+					<LinkWrapper route={getPrimaryRoute(router.route)}>
 						{links.map((link, index) =>
 							link.route
-								? <Link key={index} href={`/${link.route}`}>
-									<a><i className={link.icon} />{link.title}</a>
+								? <Link key={index} href={getPrimaryRoute(router.route) != link.route ? `${link.route}` : ""}>
+									<a ><i className={link.icon} />{link.title}</a>
 								</Link>
 								: <a key={index} href="#" onClick={link.onClick}><i className={link.icon} />{link.title}</a>
 						)}

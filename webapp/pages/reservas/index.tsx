@@ -9,7 +9,7 @@ import Spinner from "components/shared/Spinner";
 import toast from "components/shared/Toast";
 
 // Custom
-import MapComponent from "components/pages/Home/Map";
+import MapComponent from "components/pages/Reservas/Map";
 
 // Interfaces
 import { IRootState } from "redux/store";
@@ -32,7 +32,7 @@ export default function Home() {
 	const [stations, setStations] = useState<any>([]);
 	async function fetchStations() {
 		const options = {
-			url: `${process.env.api}/stations`,
+			url: `${process.env.api}/users/${user.id}/reservations`,
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json"
@@ -58,7 +58,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Localizar estações - {process.env.title}</title>
+				<title>Minhas reservas - {process.env.title}</title>
 			</Head>
 
 			{loaded

@@ -19,7 +19,7 @@ export const Sidenav = styled.div`
 	& > div {
 		padding: 0 20px;
 		overflow-y: auto;
-		height: 1800px;
+		height: 1565px;
 	}
 
 	@media (max-width: 575px) {

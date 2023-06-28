@@ -31,11 +31,24 @@ export const HeaderWrapper = styled.div`
 		font-weight: 500;
 		margin-right: 20px;
 	}
+
+	@media (max-width: 575px) {
+		display: grid;
+		grid-template-columns: 1fr 75px;
+		grid-gap: 15px;
+
+		width: calc(100vw - 20px);
+	}
 `;
 
 export const LocationsInputWrapper = styled.div`
-	width: 250px;
+	width: 350px;
 	margin-right: 15px;
+
+	@media (max-width: 575px) {
+		width: 100%;
+		margin: 0;
+	}
 `;
 
 export const Burger = styled.button`
@@ -79,6 +92,12 @@ export const LinkWrapper = styled.div`
 			border-color: var(--primary-color);
 		}
 
+		&[href="${props => props.route}"] {
+			border-color: var(--primary-color) !important;
+			background-color: var(--white-3);
+			border-radius: 25px 0 0 25px;
+		}
+
 		i {
 			margin-right: 10px;
 		}
@@ -110,8 +129,9 @@ export const Sidenav = styled.div`
 
 		& > div {
 			width: calc(100% - 20px);
-			display: flex;
-			justify-content: space-between;
+			position: absolute;
+			right: 0;
+			padding: 10px 0;
 		}
 	}
 

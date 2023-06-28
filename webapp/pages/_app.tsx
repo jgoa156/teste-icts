@@ -7,8 +7,9 @@ import { useSelector } from "react-redux";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Header from "components/shared/Header";
 import { useDispatch } from "react-redux";
-import { login, setLocation } from "redux/slicer/user";
+import { setLocation } from "redux/slicer/user";
 import { getLocation } from "utils";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
@@ -51,6 +52,11 @@ function App(props: any) {
 		loadLocation();
 	}, []);
 
+	const { isLoaded } = useJsApiLoader({
+		googleMapsApiKey: process.env.mapsApiKey as string,
+		libraries: ["places"]
+	});
+
 	return (
 		<section id="app">
 			<Head>
@@ -75,16 +81,13 @@ function App(props: any) {
 				You need to turn on JavaScript to see this page
 			</noscript>
 
-			{loaded && user.logged &&
-				<Header />
-			}
+			{loaded && isLoaded && <>
+				{user.logged && <Header />}
 
-			{loaded && <>
 				<main id={"main"}>
 					<props.Component {...props.pageProps} />
 				</main>
 			</>}
-
 		</section>
 	);
 }
