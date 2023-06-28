@@ -2,7 +2,7 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-	class Stations extends Model {
+	class Reservations extends Model {
 		static associate(models) {
 			this.belongsTo(models.Stations, {
 				foreignKey: "stationId",
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 			});
 		}
 	}
-	Stations.init(
+	Reservations.init(
 		{
 			id: {
 				allowNull: false,
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.INTEGER,
 			},
 			userId: {
-				type: DataTypes.INTEGER,
+				type: DataTypes.DOUBLE,
 				allowNull: false,
 			},
 			stationId: {
@@ -41,8 +41,8 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{
 			sequelize,
-			modelName: "Stations",
+			modelName: "Reservations",
 		}
 	);
-	return Stations;
+	return Reservations;
 };

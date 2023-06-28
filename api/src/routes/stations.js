@@ -5,11 +5,11 @@ import auth from "../auth";
 const router = express.Router();
 
 // GET
-router.get("/", /*auth.verifyAuth,*/ stationsController.list);
-router.get("/:id", /*auth.verifyAuth,*/ stationsController.list);
+router.get("/", stationsController.list);
+router.get("/:id", stationsController.list);
 
 // POST
-router.post("/", /*auth.verifyAuth,*/ stationsController.add);
-router.post("/batch", /*auth.verifyAuth,*/ stationsController.batchAdd);
+router.post("/", stationsController.add);
+router.post("/batch", stationsController.batchAdd);
 
 export default router;

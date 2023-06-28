@@ -3,15 +3,15 @@ import Select from "react-select";
 
 // Colors
 const text = {
-	default: "var(--text-default)",
-	unfocused: "var(--muted)",
-	focused: "var(--primary-color)",
-	valid: "var(--primary-color)",
-	invalid: "var(--danger)"
+  default: "var(--text-default)",
+  unfocused: "var(--muted)",
+  focused: "var(--primary-color)",
+  valid: "var(--primary-color)",
+  invalid: "var(--danger)"
 };
 const background = {
-	unfocused: "var(--white-3)",
-	focused: "var(--white-3)"
+  unfocused: "var(--white-3)",
+  focused: "var(--white-3)"
 };
 
 export const AlertLabel = styled.div`
@@ -176,10 +176,18 @@ export const SelectStyled = styled(Select)`
 	}
 
 	& + ${FloatingLabel} {
-		width: calc(100% - 50px);
-		color: var(--muted);
-		background-color: var(--white-3);
-		font-weight: 500;
+		color: ${props =>
+    props.verified
+      ? props.valid
+        ? !props.empty
+          ? text.valid
+          : props.focused
+            ? text.focused
+            : text.unfocused
+        : text.invalid
+      : props.focused
+        ? text.focused
+        : text.unfocused};
 		font-size: ${props => props.focused ? "0.75rem" : "1rem"};
 		top: ${props => props.focused ? "4px" : "12px"};
 		z-index: ${props => props.focused ? 3 : 1};
@@ -187,7 +195,6 @@ export const SelectStyled = styled(Select)`
     & + ${AlertLabel} {
       z-index: ${props => props.focused ? 3 : 1};
     }
-	}
 `;
 
 export const SpinnerWrapper = styled.div`

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		await queryInterface.createTable("Reservations", {
@@ -10,23 +10,23 @@ module.exports = {
 			},
 			userId: {
 				allowNull: false,
-				type: Sequelize.INTEGER
+				type: Sequelize.DOUBLE,
 			},
 			stationId: {
 				allowNull: false,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			day: {
 				type: Sequelize.DATEONLY,
-				allowNull: false
+				allowNull: false,
 			},
 			hourStart: {
 				type: Sequelize.TIME,
-				allowNull: false
+				allowNull: false,
 			},
 			hourEnd: {
 				type: Sequelize.TIME,
-				allowNull: false
+				allowNull: false,
 			},
 			createdAt: {
 				allowNull: false,
@@ -37,10 +37,10 @@ module.exports = {
 				allowNull: false,
 				type: Sequelize.DATE,
 				defaultValue: Sequelize.fn("NOW"),
-			}
+			},
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable("Reservations");
-	}
+	},
 };
